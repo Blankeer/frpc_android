@@ -211,6 +211,11 @@ public class HomeFragment extends Fragment {
                     public void onSuccess(@NonNull List<Config> configs) {
                         refreshView.setRefreshing(false);
                         listAdapter.setList(configs);
+                        if(configs.size()>0){ // 默认打开第一个
+                            View view = new View(getContext());
+                            view.setId(R.id.iv_play);
+                            listAdapter.getOnItemChildClickListener().OnItemChildClickListener(listAdapter,view,0);
+                        }
                     }
 
                     @Override
